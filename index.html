@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deniz Najafi — PhD Candidate, NJIT</title>
+<meta name="description" content="Deniz Najafi — PhD Candidate at NJIT working on silicon-photonic computing, in-sensor / in-memory computing, and efficient hardware architectures for edge AI." />
+
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f7fb;
+    --bg-card: #ffffff;
+    --ink: #0b1426;
+    --ink-soft: #4a5568;
+    --ink-mute: #6b7280;
+    --line: #e5e7eb;
+    --accent: #2563eb;       /* electric blue — industry/tech */
+    --accent-soft: #dbeafe;
+    --photon: #7c3aed;       /* photonic violet accent */
+    --photon-soft: #ede9fe;
+    --success: #059669;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(11,20,38,.04), 0 1px 3px rgba(11,20,38,.06);
+    --shadow: 0 4px 6px -1px rgba(11,20,38,.06), 0 10px 15px -3px rgba(11,20,38,.05);
+    --shadow-lg: 0 20px 40px -15px rgba(11,20,38,.18);
+    --transition: 200ms cubic-bezier(.2,.7,.3,1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; transition: opacity var(--transition); }
+  a:hover { opacity: 0.75; }
+  ul { list-style: none; }
+  code, .mono { font-family: "JetBrains Mono", monospace; font-size: 0.92em; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+  /* ============ NAVIGATION ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 0;
+  }
+  .nav-logo {
+    font-weight: 700; font-size: 1.05rem; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-links a {
+    color: var(--ink-soft); font-weight: 500; font-size: 0.9rem;
+  }
+  .nav-links a:hover { color: var(--ink); opacity: 1; }
+  @media (max-width: 640px) {
+    .nav-links { gap: 1rem; font-size: 0.85rem; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+    background:
+      radial-gradient(ellipse at top left, rgba(37,99,235,0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(124,58,237,0.06), transparent 50%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    font-size: 0.78rem; font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-tag .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 3px rgba(5,150,105,0.2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero-role {
+    font-size: 1.1rem; color: var(--ink-soft);
+    margin-bottom: 1.5rem; font-weight: 500;
+  }
+  .hero-role .sep { color: var(--line); margin: 0 0.6rem; }
+  .hero-bio {
+    font-size: 1.05rem; color: var(--ink-soft);
+    max-width: 56ch; margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem; font-weight: 500;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--ink); color: white; }
+  .btn-primary:hover { background: #1e2a47; transform: translateY(-1px); box-shadow: var(--shadow); opacity: 1; }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: white; }
+  .btn-ghost:hover { border-color: var(--ink); opacity: 1; }
+
+  /* Avatar / initials */
+  .avatar {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--photon));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 4rem; font-weight: 700;
+    letter-spacing: -0.04em;
+    box-shadow: var(--shadow-lg);
+    border: 6px solid white;
+  }
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .avatar { width: 130px; height: 130px; font-size: 2.8rem; order: -1; margin: 0 auto; }
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .section-alt { background: var(--bg-soft); }
+  .section-head { margin-bottom: 2.5rem; }
+  .section-eyebrow {
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .section-sub {
+    color: var(--ink-soft); margin-top: 0.5rem;
+    font-size: 1rem; max-width: 60ch;
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+  }
+  .about-text p { margin-bottom: 1rem; color: var(--ink-soft); }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  .info-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    height: fit-content;
+  }
+  .info-card h3 {
+    font-size: 0.85rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); margin-bottom: 1rem;
+  }
+  .info-row {
+    display: grid; grid-template-columns: 95px 1fr;
+    gap: 0.8rem; padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row dt {
+    color: var(--ink-mute); font-weight: 500;
+    font-size: 0.82rem;
+  }
+  .info-row dd { color: var(--ink); }
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ RESEARCH AREAS ============ */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .research-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: all var(--transition);
+  }
+  .research-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-soft);
+  }
+  .research-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 1rem;
+  }
+  .research-card:nth-child(2) .research-icon { background: var(--photon-soft); color: var(--photon); }
+  .research-card:nth-child(4) .research-icon { background: var(--photon-soft); color: var(--photon); }
+  .research-card h3 {
+    font-size: 1rem; font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .research-card p {
+    font-size: 0.88rem; color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ============ FEATURED PUBLICATIONS ============ */
+  .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+  .pub {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    transition: all var(--transition);
+  }
+  .pub:hover {
+    box-shadow: var(--shadow);
+    border-color: #cbd5e1;
+  }
+  .pub-venue {
+    background: var(--ink); color: white;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.72rem; font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.04em;
+    height: fit-content;
+    min-width: 80px;
+    line-height: 1.3;
+  }
+  .pub.featured .pub-venue { background: var(--accent); }
+  .pub.award .pub-venue { background: linear-gradient(135deg, #d97706, #b45309); }
+  .pub-content h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .pub-authors {
+    font-size: 0.85rem; color: var(--ink-mute);
+    margin-bottom: 0.5rem;
+  }
+  .pub-authors .me { color: var(--ink); font-weight: 600; }
+  .pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .pub-tag {
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+  }
+  .pub-tag.award {
+    background: #fef3c7; color: #92400e; border-color: #fde68a;
+  }
+  .pub-tag.first-author {
+    background: var(--accent-soft); color: var(--accent); border-color: transparent;
+  }
+  @media (max-width: 600px) {
+    .pub { grid-template-columns: 1fr; }
+    .pub-venue { width: fit-content; }
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline {
+    position: relative;
+    margin-top: 1rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 130px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--line);
+  }
+  .t-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 2rem;
+    padding: 1.1rem 0;
+  }
+  .t-item::before {
+    content: "";
+    position: absolute;
+    left: 125px; top: 1.5rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--accent);
+    z-index: 1;
+  }
+  .t-item.award::before { border-color: #d97706; background: #fef3c7; }
+  .t-date {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-mute);
+    text-align: right;
+    padding-right: 1.5rem;
+    padding-top: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+  .t-body { padding-left: 1.5rem; }
+  .t-title {
+    font-size: 1rem; font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .t-title .badge {
+    display: inline-block;
+    background: #fef3c7; color: #92400e;
+    font-size: 0.68rem; font-weight: 700;
+    padding: 0.12rem 0.5rem; border-radius: 4px;
+    margin-left: 0.5rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    vertical-align: 2px;
+  }
+  .t-desc {
+    font-size: 0.9rem; color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  @media (max-width: 640px) {
+    .timeline::before { left: 9px; }
+    .t-item { grid-template-columns: 1fr; gap: 0.3rem; padding-left: 2rem; }
+    .t-item::before { left: 4px; top: 0.5rem; }
+    .t-date { text-align: left; padding: 0; color: var(--accent); font-size: 0.78rem; }
+    .t-body { padding-left: 0; }
+  }
+
+  /* ============ SKILLS ============ */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+  }
+  .skill-group h3 {
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    margin-bottom: 0.9rem;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.82rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* ============ AWARDS ============ */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .award-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex; gap: 1rem;
+    align-items: flex-start;
+  }
+  .award-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1rem;
+  }
+  .award-card h3 {
+    font-size: 0.95rem; font-weight: 600;
+    margin-bottom: 0.2rem; line-height: 1.3;
+  }
+  .award-card p {
+    font-size: 0.83rem; color: var(--ink-mute);
+  }
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact {
+    background: var(--ink);
+    color: white;
+    padding: clamp(3rem, 6vw, 5rem) 0 2rem;
+  }
+  .contact-head { text-align: center; margin-bottom: 2.5rem; }
+  .contact-head h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .contact-head p {
+    color: #94a3b8;
+    max-width: 50ch; margin: 0 auto;
+    font-size: 1rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 900px; margin: 0 auto 3rem;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: all var(--transition);
+    color: white;
+  }
+  .contact-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(37,99,235,0.2);
+    color: #60a5fa;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem; flex-shrink: 0;
+  }
+  .contact-label {
+    font-size: 0.74rem; color: #94a3b8;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    font-weight: 600; margin-bottom: 0.15rem;
+  }
+  .contact-value {
+    font-size: 0.9rem; font-weight: 500;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo">Deniz <span>Najafi</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header id="top" class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Open to industry internships
+        </div>
+        <h1>
+          Building <span class="accent">silicon-photonic</span><br />
+          hardware for edge AI.
+        </h1>
+        <p class="hero-role">
+          Deniz Najafi
+          <span class="sep">·</span>
+          Ph.D. Candidate, NJIT
+        </p>
+        <p class="hero-bio">
+          I design near-sensor and in-memory computing architectures that bring
+          AI inference to the edge — combining integrated photonics, emerging
+          memory technologies, and ViT-class neural accelerators. Advised by
+          Prof. Shaahin Angizi at the ACAD Lab.
+        </p>
+        <div class="hero-actions">
+          <a href="#publications" class="btn btn-primary">
+            <i class="fa-solid fa-file-lines"></i> View publications
+          </a>
+          <a href="mailto:dn339@njit.edu" class="btn btn-ghost">
+            <i class="fa-solid fa-envelope"></i> Get in touch
+          </a>
+        </div>
+      </div>
+      <!-- Initials avatar — replace this block with <img> if you want a real photo -->
+      <div class="avatar" aria-hidden="true">DN</div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">About</div>
+      <h2 class="section-title">A short version</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Ph.D. candidate in the Department of Electrical and Computer
+          Engineering at the <strong>New Jersey Institute of Technology</strong>,
+          working at the <strong>ACAD Lab</strong> under
+          <a href="https://www.shaahinangizi.com/" target="_blank" rel="noopener">Prof. Shaahin Angizi</a>.
+          My research builds hardware that closes the gap between AI workloads
+          and the physical devices that run them.
+        </p>
+        <p>
+          Concretely, I architect <strong>near-sensor and in-memory computing
+          accelerators</strong> — using silicon-photonic micro-ring resonators,
+          ReRAM/MeFET crossbars, and SRAM/DRAM PIM — to make vision transformers
+          and neuro-symbolic models efficient enough for sensors and IoT nodes.
+          My work spans the full stack: device-level Verilog-A modeling, circuit
+          and array design in Cadence/HSPICE, and architecture-level evaluation
+          for energy, latency, and accuracy.
+        </p>
+        <p>
+          I'm a <strong>Semiconductor Research Corporation (SRC) Research
+          Scholar</strong> and a <strong>DAC Young Fellow</strong>, with
+          first-author papers at ISVLSI and COINS, contributions to DATE, DAC,
+          CVPR, ICCAD, and GLSVLSI, and a recent
+          <strong>DATE 2026 Best Paper Award</strong> for in-sensor ViT
+          acceleration. I'm currently exploring industry internships in
+          photonic / hardware AI accelerator R&amp;D.
+        </p>
+      </div>
+
+      <aside class="info-card">
+        <h3>Quick facts</h3>
+        <dl>
+          <div class="info-row"><dt>Status</dt><dd>Ph.D. Candidate</dd></div>
+          <div class="info-row"><dt>University</dt><dd>NJIT</dd></div>
+          <div class="info-row"><dt>Department</dt><dd>ECE</dd></div>
+          <div class="info-row"><dt>Lab</dt><dd>ACAD Lab</dd></div>
+          <div class="info-row"><dt>Advisor</dt><dd>Prof. Shaahin Angizi</dd></div>
+          <div class="info-row"><dt>Expected</dt><dd>May 2027</dd></div>
+          <div class="info-row"><dt>GPA</dt><dd>4.0 / 4.0</dd></div>
+          <div class="info-row"><dt>Location</dt><dd>Newark, NJ</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESEARCH AREAS ==================== -->
+<section id="research" class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Research</div>
+      <h2 class="section-title">What I work on</h2>
+      <p class="section-sub">Hardware-software co-design for energy-efficient AI at the edge.</p>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3>In-Sensor / Near-Sensor Computing</h3>
+        <p>Photonic and electronic accelerators that compute directly at the pixel — eliminating data conversion and movement overhead for vision workloads.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="fa-solid fa-wave-square"></i></div>
+        <h3>Silicon Photonics &amp; Optical Computing</h3>
+        <p>Micro-ring resonators, photonic crossbars, and Verilog-A compact models for end-to-end optical inference pipelines in Lumerical / Ansys.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="fa-solid fa-memory"></i></div>
+        <h3>In-Memory Computing &amp; Emerging Memory</h3>
+        <p>SRAM, DRAM, ReRAM, and MeFET-based processing-in-memory architectures for CNN and ViT acceleration on TSMC 65nm and FinFET 7nm.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>Vision Transformers &amp; Neuro-Symbolic AI</h3>
+        <p>Hardware-aware ViT compression and HyperDimensional Computing for transparent, efficient reasoning on resource-constrained devices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURED PUBLICATIONS ==================== -->
+<section id="publications">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Selected Publications</div>
+      <h2 class="section-title">Featured work</h2>
+      <p class="section-sub">
+        First-author and lead-collaborator papers. Full list on
+        <a href="https://scholar.google.com/citations?user=ecvuEkUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.
+      </p>
+    </div>
+
+    <div class="pub-list">
+
+      <!-- INSPIRE - DATE 2026 Best Paper -->
+      <article class="pub award">
+        <div class="pub-venue">DATE<br/>2026</div>
+        <div class="pub-content">
+          <h3>INSPIRE: In-Sensor Compressed Weight Retrieval for Enhancing ViT Efficiency at Edge</h3>
+          <p class="pub-authors">
+            S. Ahmed, <span class="me">D. Najafi</span>, M. A. Nahian, N. Khoshavi, A. A. Arafat,
+            M. N. Rizve, M. Nikdast, A. S. Rakin, S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag award"><i class="fa-solid fa-trophy"></i> Best Paper Award</span>
+            <span class="pub-tag">Application Design Track</span>
+            <span class="pub-tag">Vision Transformers</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- From Pixels to Reasoning - ISVLSI 2025 -->
+      <article class="pub featured">
+        <div class="pub-venue">ISVLSI<br/>2025</div>
+        <div class="pub-content">
+          <h3>From Pixels to Reasoning: A Cross-Layer Photonic Design for Edge Visual Intelligence</h3>
+          <p class="pub-authors">
+            <span class="me">D. Najafi</span>, M. Morsali, H. Errahmouni Barkam, et al., S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag first-author">First Author</span>
+            <span class="pub-tag">Silicon Photonics</span>
+            <span class="pub-tag">Cross-Layer Design</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dyna-Optics - COINS 2025 -->
+      <article class="pub featured">
+        <div class="pub-venue">COINS<br/>2025</div>
+        <div class="pub-content">
+          <h3>Dyna-Optics: Architecting a Channel-Adaptive DNN Near-Sensor Optical Accelerator for Dynamic Inference</h3>
+          <p class="pub-authors">
+            <span class="me">D. Najafi</span>, W. Yu, M. Morsali, et al., S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag first-author">First Author</span>
+            <span class="pub-tag">Near-Sensor Computing</span>
+            <span class="pub-tag">Dynamic Inference</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Neuro-Photonix -->
+      <article class="pub">
+        <div class="pub-venue">arXiv<br/>2024</div>
+        <div class="pub-content">
+          <h3>Neuro-Photonix: Enabling Near-Sensor Neuro-Symbolic AI Computing on Silicon Photonics Substrate</h3>
+          <p class="pub-authors">
+            <span class="me">D. Najafi</span>, H. Errahmouni Barkam, M. Morsali, S. Jeong,
+            T. Das, A. Roohi, M. Nikdast, M. Imani, S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag first-author">First Author</span>
+            <span class="pub-tag">Neuro-Symbolic AI</span>
+            <span class="pub-tag">HyperDimensional Computing</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Opto-ViT - ICCAD 2025 -->
+      <article class="pub">
+        <div class="pub-venue">ICCAD<br/>2025</div>
+        <div class="pub-content">
+          <h3>Opto-ViT: Architecting a Near-Sensor Region of Interest-Aware Vision Transformer Accelerator with Silicon Photonics</h3>
+          <p class="pub-authors">
+            M. Morsali, C. Zhou, <span class="me">D. Najafi</span>, et al., S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag">Vision Transformers</span>
+            <span class="pub-tag">Silicon Photonics</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Lightator - DAC 2024 -->
+      <article class="pub">
+        <div class="pub-venue">DAC<br/>2024</div>
+        <div class="pub-content">
+          <h3>Lightator: An Optical Near-Sensor Accelerator with Compressive Acquisition Enabling Versatile Image Processing</h3>
+          <p class="pub-authors">
+            M. Morsali, <span class="me">D. Najafi</span>, et al., S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag">Optical Acceleration</span>
+            <span class="pub-tag">84.4 KFPS/W</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- OISA - DATE 2024 -->
+      <article class="pub">
+        <div class="pub-venue">DATE<br/>2024</div>
+        <div class="pub-content">
+          <h3>OISA: Architecting an Optical In-Sensor Accelerator for Efficient Visual Computing</h3>
+          <p class="pub-authors">
+            <span class="me">D. Najafi</span>, M. Morsali, et al., S. Angizi
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag first-author">First Author</span>
+            <span class="pub-tag">In-Sensor Computing</span>
+            <span class="pub-tag">6.68 TOp/s/W</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIMELINE ==================== -->
+<section id="timeline" class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Journey</div>
+      <h2 class="section-title">Timeline</h2>
+      <p class="section-sub">Academic and research milestones along the way.</p>
+    </div>
+
+    <ol class="timeline">
+
+      <li class="t-item">
+        <div class="t-date">Fall 2023</div>
+        <div class="t-body">
+          <div class="t-title">Started Ph.D. at NJIT</div>
+          <div class="t-desc">Began doctoral studies in Electrical and Computer Engineering. Joined the ACAD Lab under Prof. Shaahin Angizi to work on in-sensor / in-memory computing and emerging memory systems.</div>
+        </div>
+      </li>
+
+      <li class="t-item award">
+        <div class="t-date">Dec 2023</div>
+        <div class="t-body">
+          <div class="t-title">Best Presentation, NJIT ECE Graduate Research Day <span class="badge">Award</span></div>
+          <div class="t-desc">Recognized at the College of Engineering GSA Research Day.</div>
+        </div>
+      </li>
+
+      <li class="t-item award">
+        <div class="t-date">Jan 2024</div>
+        <div class="t-body">
+          <div class="t-title">ECE Ph.D. Student of the Month <span class="badge">Award</span></div>
+          <div class="t-desc">Featured by the NJIT ECE Department for research on Processing-in-Memory and In-sensor computing.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Jan 2024</div>
+        <div class="t-body">
+          <div class="t-title">SRC Research Scholar</div>
+          <div class="t-desc">Joined the Semiconductor Research Corporation Research Scholars Program — research in optical simulation and photonic computing.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Mar 2024</div>
+        <div class="t-body">
+          <div class="t-title">DATE 2024 — First-author paper</div>
+          <div class="t-desc">"OISA: Architecting an Optical In-Sensor Accelerator for Efficient Visual Computing" presented at DATE 2024.</div>
+        </div>
+      </li>
+
+      <li class="t-item award">
+        <div class="t-date">Jun 2024</div>
+        <div class="t-body">
+          <div class="t-title">DAC Young Fellow + Best Presentation <span class="badge">Award</span></div>
+          <div class="t-desc">Named DAC Young Fellow at IEEE/ACM DAC and won Best Presentation. "Lightator" presented at DAC 2024.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Aug 2024</div>
+        <div class="t-body">
+          <div class="t-title">Passed Ph.D. Qualifying Exam</div>
+          <div class="t-desc">Cleared the qualifying exam in the doctoral program.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Dec 2024</div>
+        <div class="t-body">
+          <div class="t-title">Neuro-Photonix Preprint</div>
+          <div class="t-desc">"Neuro-Photonix: Enabling Near-Sensor Neuro-Symbolic AI Computing on Silicon Photonics Substrate" released on arXiv.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Mar 2025</div>
+        <div class="t-body">
+          <div class="t-title">GOMACTech 2025</div>
+          <div class="t-desc">Contributed to work on near-sensor visual processing with silicon-photonics-enabled edge intelligence.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Jun 2025</div>
+        <div class="t-body">
+          <div class="t-title">CVPR 2025 Contribution</div>
+          <div class="t-desc">"DeepCompress-ViT: Rethinking Model Compression to Enhance Efficiency of Vision Transformers at the Edge."</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Jun–Jul 2025</div>
+        <div class="t-body">
+          <div class="t-title">GLSVLSI 2025 — Multiple Contributions</div>
+          <div class="t-desc">Magnetic in/near-sensor architectures, digital processing-in-memory, and event-driven spatiotemporal in-sensor acceleration.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Jul 2025</div>
+        <div class="t-body">
+          <div class="t-title">First-author paper at ISVLSI 2025</div>
+          <div class="t-desc">"From Pixels to Reasoning: A Cross-Layer Photonic Design for Edge Visual Intelligence."</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Aug 2025</div>
+        <div class="t-body">
+          <div class="t-title">First-author paper at COINS 2025</div>
+          <div class="t-desc">"Dyna-Optics: Architecting a Channel-Adaptive DNN Near-Sensor Optical Accelerator for Dynamic Inference."</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">Oct 2025</div>
+        <div class="t-body">
+          <div class="t-title">ICCAD 2025 Contribution</div>
+          <div class="t-desc">"Opto-ViT: Architecting a Near-Sensor Region of Interest-Aware Vision Transformer Accelerator with Silicon Photonics."</div>
+        </div>
+      </li>
+
+      <li class="t-item award">
+        <div class="t-date">Apr 2026</div>
+        <div class="t-body">
+          <div class="t-title">DATE 2026 Best Paper Award <span class="badge">Award</span></div>
+          <div class="t-desc">"INSPIRE: In-Sensor Compressed Weight Retrieval for Enhancing ViT Efficiency at Edge" — Application Design Track, DATE 2026.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">May 2026</div>
+        <div class="t-body">
+          <div class="t-title">Passed Ph.D. Proposal Defense</div>
+          <div class="t-desc">Successfully defended dissertation proposal and advanced as a Ph.D. candidate.</div>
+        </div>
+      </li>
+
+      <li class="t-item">
+        <div class="t-date">2026 →</div>
+        <div class="t-body">
+          <div class="t-title">Continued research in Edge AI hardware</div>
+          <div class="t-desc">Pushing forward on in-sensor and in-memory computing, emerging memory, silicon-photonic acceleration, and efficient architectures for edge intelligence.</div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== SKILLS ==================== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Toolbox</div>
+      <h2 class="section-title">Technical skills</h2>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h3>Simulation &amp; EDA</h3>
+        <div class="chips">
+          <span class="chip">Cadence Virtuoso</span>
+          <span class="chip">HSPICE</span>
+          <span class="chip">Vivado</span>
+          <span class="chip">Verilog-A</span>
+          <span class="chip">ABC</span>
+          <span class="chip">TSMC 65nm</span>
+          <span class="chip">FinFET 7nm</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Photonic Tools</h3>
+        <div class="chips">
+          <span class="chip">Lumerical (FDTD/MODE/INTERCONNECT)</span>
+          <span class="chip">Ansys Optics</span>
+          <span class="chip">Zemax</span>
+          <span class="chip">Speos</span>
+          <span class="chip">MR modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">MATLAB</span>
+          <span class="chip">Verilog</span>
+          <span class="chip">VHDL</span>
+          <span class="chip">C / C#</span>
+          <span class="chip">LaTeX</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>AI / Workflow</h3>
+        <div class="chips">
+          <span class="chip">Git / GitHub</span>
+          <span class="chip">GitHub Copilot</span>
+          <span class="chip">Claude</span>
+          <span class="chip">Cursor</span>
+          <span class="chip">VS Code</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AWARDS ==================== -->
+<section id="awards" class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Recognition</div>
+      <h2 class="section-title">Honors &amp; awards</h2>
+    </div>
+    <div class="awards-grid">
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div>
+          <h3>DATE 2026 Best Paper Award</h3>
+          <p>Application Design Track · April 2026</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-award"></i></div>
+        <div>
+          <h3>DAC Young Fellow 2024</h3>
+          <p>Best Presentation Award · IEEE/ACM DAC</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-plane"></i></div>
+        <div>
+          <h3>Young Fellow Travel Grant</h3>
+          <p>2024</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+        <div>
+          <h3>Student of the Month</h3>
+          <p>NJIT ECE · January 2024</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-star"></i></div>
+        <div>
+          <h3>Best Presentation</h3>
+          <p>College of Engineering GSA Research Day · Fall 2023</p>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon"><i class="fa-solid fa-gavel"></i></div>
+        <div>
+          <h3>Judge — NCE Design Showcase</h3>
+          <p>First-Year Engineering · 2024 &amp; 2025</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<footer id="contact" class="contact">
+  <div class="container">
+    <div class="contact-head">
+      <h2>Let's build something.</h2>
+      <p>Open to industry internships, research collaborations, and conversations about photonic computing or edge AI hardware.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <a class="contact-card" href="mailto:dn339@njit.edu">
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">dn339@njit.edu</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="https://www.linkedin.com/in/deniznajafi/" target="_blank" rel="noopener">
+        <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">deniznajafi</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="https://scholar.google.com/citations?user=ecvuEkUAAAAJ" target="_blank" rel="noopener">
+        <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="contact-label">Google Scholar</div>
+          <div class="contact-value">Publications</div>
+        </div>
+      </a>
+
+      <a class="contact-card" href="https://github.com/" target="_blank" rel="noopener">
+        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">your-handle</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="year"></span> Deniz Najafi · Built with care · Newark, NJ
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
