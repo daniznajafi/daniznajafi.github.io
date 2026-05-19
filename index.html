@@ -7,6 +7,10 @@
 <title>Deniz Najafi — PhD Candidate, NJIT</title>
 <meta name="description" content="Deniz Najafi — PhD Candidate at NJIT working on silicon-photonic computing, in-sensor / in-memory computing, and efficient hardware architectures for edge AI." />
 
+<!-- Favicon: SVG with DN initials on blue→purple gradient -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='28' fill='white' text-anchor='middle' letter-spacing='-1'%3EDN%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Inter,Arial,sans-serif' font-weight='700' font-size='28' fill='white' text-anchor='middle' letter-spacing='-1'%3EDN%3C/text%3E%3C/svg%3E" />
+
 <!-- Font Awesome (icons) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -328,9 +332,10 @@
   .t-item {
     position: relative;
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: 130px 1fr auto;
     gap: 2rem;
     padding: 1.1rem 0;
+    align-items: center;
   }
   .t-item::before {
     content: "";
@@ -370,12 +375,41 @@
     font-size: 0.9rem; color: var(--ink-soft);
     line-height: 1.55;
   }
+  /* Right-side organization / conference logos */
+  .t-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px; height: 72px;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .t-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
   @media (max-width: 640px) {
     .timeline::before { left: 9px; }
-    .t-item { grid-template-columns: 1fr; gap: 0.3rem; padding-left: 2rem; }
+    .t-item {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "date logo"
+        "body logo";
+      gap: 0.3rem 1rem;
+      padding-left: 2rem;
+      align-items: start;
+    }
     .t-item::before { left: 4px; top: 0.5rem; }
-    .t-date { text-align: left; padding: 0; color: var(--accent); font-size: 0.78rem; }
-    .t-body { padding-left: 0; }
+    .t-date { grid-area: date; text-align: left; padding: 0; color: var(--accent); font-size: 0.78rem; }
+    .t-body { grid-area: body; padding-left: 0; }
+    .t-logo { grid-area: logo; width: 56px; height: 56px; align-self: center; }
   }
 
   /* ============ SKILLS ============ */
@@ -791,141 +825,239 @@
 
     <ol class="timeline">
 
-      <li class="t-item">
-        <div class="t-date">Fall 2023</div>
-        <div class="t-body">
-          <div class="t-title">Started Ph.D. at NJIT</div>
-          <div class="t-desc">Began doctoral studies in Electrical and Computer Engineering. Joined the ACAD Lab under Prof. Shaahin Angizi to work on in-sensor / in-memory computing and emerging memory systems.</div>
-        </div>
-      </li>
-
-      <li class="t-item award">
-        <div class="t-date">Dec 2023</div>
-        <div class="t-body">
-          <div class="t-title">Best Presentation, NJIT ECE Graduate Research Day <span class="badge">Award</span></div>
-          <div class="t-desc">Recognized at the College of Engineering GSA Research Day.</div>
-        </div>
-      </li>
-
-      <li class="t-item award">
-        <div class="t-date">Jan 2024</div>
-        <div class="t-body">
-          <div class="t-title">ECE Ph.D. Student of the Month <span class="badge">Award</span></div>
-          <div class="t-desc">Featured by the NJIT ECE Department for research on Processing-in-Memory and In-sensor computing.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Jan 2024</div>
-        <div class="t-body">
-          <div class="t-title">SRC Research Scholar</div>
-          <div class="t-desc">Joined the Semiconductor Research Corporation Research Scholars Program — research in optical simulation and photonic computing.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Mar 2024</div>
-        <div class="t-body">
-          <div class="t-title">DATE 2024 — First-author paper</div>
-          <div class="t-desc">"OISA: Architecting an Optical In-Sensor Accelerator for Efficient Visual Computing" presented at DATE 2024.</div>
-        </div>
-      </li>
-
-      <li class="t-item award">
-        <div class="t-date">Jun 2024</div>
-        <div class="t-body">
-          <div class="t-title">DAC Young Fellow + Best Presentation <span class="badge">Award</span></div>
-          <div class="t-desc">Named DAC Young Fellow at IEEE/ACM DAC and won Best Presentation. "Lightator" presented at DAC 2024.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Aug 2024</div>
-        <div class="t-body">
-          <div class="t-title">Passed Ph.D. Qualifying Exam</div>
-          <div class="t-desc">Cleared the qualifying exam in the doctoral program.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Dec 2024</div>
-        <div class="t-body">
-          <div class="t-title">Neuro-Photonix Preprint</div>
-          <div class="t-desc">"Neuro-Photonix: Enabling Near-Sensor Neuro-Symbolic AI Computing on Silicon Photonics Substrate" released on arXiv.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Mar 2025</div>
-        <div class="t-body">
-          <div class="t-title">GOMACTech 2025</div>
-          <div class="t-desc">Contributed to work on near-sensor visual processing with silicon-photonics-enabled edge intelligence.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Jun 2025</div>
-        <div class="t-body">
-          <div class="t-title">CVPR 2025 Contribution</div>
-          <div class="t-desc">"DeepCompress-ViT: Rethinking Model Compression to Enhance Efficiency of Vision Transformers at the Edge."</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Jun–Jul 2025</div>
-        <div class="t-body">
-          <div class="t-title">GLSVLSI 2025 — Multiple Contributions</div>
-          <div class="t-desc">Magnetic in/near-sensor architectures, digital processing-in-memory, and event-driven spatiotemporal in-sensor acceleration.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Jul 2025</div>
-        <div class="t-body">
-          <div class="t-title">First-author paper at ISVLSI 2025</div>
-          <div class="t-desc">"From Pixels to Reasoning: A Cross-Layer Photonic Design for Edge Visual Intelligence."</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Aug 2025</div>
-        <div class="t-body">
-          <div class="t-title">First-author paper at COINS 2025</div>
-          <div class="t-desc">"Dyna-Optics: Architecting a Channel-Adaptive DNN Near-Sensor Optical Accelerator for Dynamic Inference."</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">Oct 2025</div>
-        <div class="t-body">
-          <div class="t-title">ICCAD 2025 Contribution</div>
-          <div class="t-desc">"Opto-ViT: Architecting a Near-Sensor Region of Interest-Aware Vision Transformer Accelerator with Silicon Photonics."</div>
-        </div>
-      </li>
-
-      <li class="t-item award">
-        <div class="t-date">Apr 2026</div>
-        <div class="t-body">
-          <div class="t-title">DATE 2026 Best Paper Award <span class="badge">Award</span></div>
-          <div class="t-desc">"INSPIRE: In-Sensor Compressed Weight Retrieval for Enhancing ViT Efficiency at Edge" — Application Design Track, DATE 2026.</div>
-        </div>
-      </li>
-
-      <li class="t-item">
-        <div class="t-date">May 2026</div>
-        <div class="t-body">
-          <div class="t-title">Passed Ph.D. Proposal Defense</div>
-          <div class="t-desc">Successfully defended dissertation proposal and advanced as a Ph.D. candidate.</div>
-        </div>
-      </li>
-
+      <!-- LOGO: NJIT (ongoing research at NJIT) -->
       <li class="t-item">
         <div class="t-date">2026 →</div>
         <div class="t-body">
           <div class="t-title">Continued research in Edge AI hardware</div>
           <div class="t-desc">Pushing forward on in-sensor and in-memory computing, emerging memory, silicon-photonic acceleration, and efficient architectures for edge intelligence.</div>
         </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
       </li>
+
+      <!-- LOGO: NJIT (proposal defense at NJIT) -->
+      <li class="t-item">
+        <div class="t-date">May 2026</div>
+        <div class="t-body">
+          <div class="t-title">Passed Ph.D. Proposal Defense</div>
+          <div class="t-desc">Successfully defended dissertation proposal and advanced as a Ph.D. candidate.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: DATE conference -->
+      <li class="t-item award">
+        <div class="t-date">Apr 2026</div>
+        <div class="t-body">
+          <div class="t-title">DATE 2026 Best Paper Award <span class="badge">Award</span></div>
+          <div class="t-desc">"INSPIRE: In-Sensor Compressed Weight Retrieval for Enhancing ViT Efficiency at Edge" — Application Design Track, DATE 2026.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/date.png" alt="DATE" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.85rem;color:var(--accent)\'>DATE</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: ICCAD conference -->
+      <li class="t-item">
+        <div class="t-date">Oct 2025</div>
+        <div class="t-body">
+          <div class="t-title">ICCAD 2025 Contribution</div>
+          <div class="t-desc">"Opto-ViT: Architecting a Near-Sensor Region of Interest-Aware Vision Transformer Accelerator with Silicon Photonics."</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/iccad.png" alt="ICCAD" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.8rem;color:var(--accent)\'>ICCAD</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: COINS conference -->
+      <li class="t-item">
+        <div class="t-date">Aug 2025</div>
+        <div class="t-body">
+          <div class="t-title">First-author paper at COINS 2025</div>
+          <div class="t-desc">"Dyna-Optics: Architecting a Channel-Adaptive DNN Near-Sensor Optical Accelerator for Dynamic Inference."</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/coins.png" alt="COINS" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.8rem;color:var(--accent)\'>COINS</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: ISVLSI conference -->
+      <li class="t-item">
+        <div class="t-date">Jul 2025</div>
+        <div class="t-body">
+          <div class="t-title">First-author paper at ISVLSI 2025</div>
+          <div class="t-desc">"From Pixels to Reasoning: A Cross-Layer Photonic Design for Edge Visual Intelligence."</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/isvlsi.png" alt="ISVLSI" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.78rem;color:var(--accent)\'>ISVLSI</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: GLSVLSI conference -->
+      <li class="t-item">
+        <div class="t-date">Jun–Jul 2025</div>
+        <div class="t-body">
+          <div class="t-title">GLSVLSI 2025 — Multiple Contributions</div>
+          <div class="t-desc">Magnetic in/near-sensor architectures, digital processing-in-memory, and event-driven spatiotemporal in-sensor acceleration.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/glsvlsi.png" alt="GLSVLSI" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.72rem;color:var(--accent)\'>GLSVLSI</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: CVPR conference -->
+      <li class="t-item">
+        <div class="t-date">Jun 2025</div>
+        <div class="t-body">
+          <div class="t-title">CVPR 2025 Contribution</div>
+          <div class="t-desc">"DeepCompress-ViT: Rethinking Model Compression to Enhance Efficiency of Vision Transformers at the Edge."</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/cvpr.png" alt="CVPR" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.85rem;color:var(--accent)\'>CVPR</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: GOMACTech conference -->
+      <li class="t-item">
+        <div class="t-date">Mar 2025</div>
+        <div class="t-body">
+          <div class="t-title">GOMACTech 2025</div>
+          <div class="t-desc">Contributed to work on near-sensor visual processing with silicon-photonics-enabled edge intelligence.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/gomactech.png" alt="GOMACTech" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.68rem;color:var(--accent);text-align:center;line-height:1.1\'>GOMAC<br>Tech</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: arXiv -->
+      <li class="t-item">
+        <div class="t-date">Dec 2024</div>
+        <div class="t-body">
+          <div class="t-title">Neuro-Photonix Preprint</div>
+          <div class="t-desc">"Neuro-Photonix: Enabling Near-Sensor Neuro-Symbolic AI Computing on Silicon Photonics Substrate" released on arXiv.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/arxiv.png" alt="arXiv" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.85rem;color:#b31b1b\'>arXiv</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: NJIT (qualifying exam at NJIT) -->
+      <li class="t-item">
+        <div class="t-date">Aug 2024</div>
+        <div class="t-body">
+          <div class="t-title">Passed Ph.D. Qualifying Exam</div>
+          <div class="t-desc">Cleared the qualifying exam in the doctoral program.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: DAC conference -->
+      <li class="t-item award">
+        <div class="t-date">Jun 2024</div>
+        <div class="t-body">
+          <div class="t-title">DAC Young Fellow + Best Presentation <span class="badge">Award</span></div>
+          <div class="t-desc">Named DAC Young Fellow at IEEE/ACM DAC and won Best Presentation. "Lightator" presented at DAC 2024.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/dac.png" alt="DAC" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.95rem;color:var(--accent)\'>DAC</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: DATE conference -->
+      <li class="t-item">
+        <div class="t-date">Mar 2024</div>
+        <div class="t-body">
+          <div class="t-title">DATE 2024 — First-author paper</div>
+          <div class="t-desc">"OISA: Architecting an Optical In-Sensor Accelerator for Efficient Visual Computing" presented at DATE 2024.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/date.png" alt="DATE" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.85rem;color:var(--accent)\'>DATE</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: SRC (Semiconductor Research Corporation) -->
+      <li class="t-item">
+        <div class="t-date">Jan 2024</div>
+        <div class="t-body">
+          <div class="t-title">SRC Research Scholar</div>
+          <div class="t-desc">Joined the Semiconductor Research Corporation Research Scholars Program — research in optical simulation and photonic computing.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/src.png" alt="SRC" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.95rem;color:var(--accent)\'>SRC</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: NJIT (ECE Student of the Month - NJIT ECE Dept) -->
+      <li class="t-item award">
+        <div class="t-date">Jan 2024</div>
+        <div class="t-body">
+          <div class="t-title">ECE Ph.D. Student of the Month <span class="badge">Award</span></div>
+          <div class="t-desc">Featured by the NJIT ECE Department for research on Processing-in-Memory and In-sensor computing.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: NJIT (NJIT Graduate Research Day) -->
+      <li class="t-item award">
+        <div class="t-date">Dec 2023</div>
+        <div class="t-body">
+          <div class="t-title">Best Presentation, NJIT ECE Graduate Research Day <span class="badge">Award</span></div>
+          <div class="t-desc">Recognized at the College of Engineering GSA Research Day.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
+      </li>
+
+      <!-- LOGO: NJIT (started Ph.D. at NJIT) -->
+      <li class="t-item">
+        <div class="t-date">Fall 2023</div>
+        <div class="t-body">
+          <div class="t-title">Started Ph.D. at NJIT</div>
+          <div class="t-desc">Began doctoral studies in Electrical and Computer Engineering. Joined the ACAD Lab under Prof. Shaahin Angizi to work on in-sensor / in-memory computing and emerging memory systems.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/njit.png" alt="NJIT" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.75rem;color:var(--ink-mute)\'>NJIT</span>'" />
+        </div>
+      </li>
+
+      <!--
+        ============================================================
+        TEMPLATE FOR ADDING A NEW TIMELINE ENTRY
+        ============================================================
+        Copy the block below and fill it in. Drop it at the TOP of
+        the <ol class="timeline"> if it's the newest event.
+
+        If you have a logo file: save it as assets/logos/NAME.png
+        and update the src="assets/logos/NAME.png" line.
+
+        If you DO NOT have a logo yet: leave the src as-is and
+        change the <!- - LOGO: ... - -> comment above the <li> to
+        say <!- - TODO: ADD LOGO for this event - ->. The text
+        fallback (in the onerror attribute) will display until you
+        add the image file.
+        ============================================================
+
+      <!- - TODO: ADD LOGO for this event - ->
+      <li class="t-item">
+        <div class="t-date">MMM YYYY</div>
+        <div class="t-body">
+          <div class="t-title">Title of the event</div>
+          <div class="t-desc">One-sentence description.</div>
+        </div>
+        <div class="t-logo" aria-hidden="true">
+          <img src="assets/logos/PLACEHOLDER.png" alt="Org name" loading="lazy" onerror="this.parentElement.innerHTML='<span style=\'font-weight:700;font-size:0.8rem;color:var(--accent)\'>NAME</span>'" />
+        </div>
+      </li>
+      -->
 
     </ol>
   </div>
